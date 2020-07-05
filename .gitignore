@@ -1,0 +1,11 @@
+# Package directory
+/node_modules
+
+# Source files
+source.csv
+
+# Env config
+.env
+
+# Build directory
+/dist
