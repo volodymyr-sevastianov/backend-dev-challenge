@@ -1,0 +1,40 @@
+{
+  "name": "backend-dev-challenge",
+  "version": "1.0.0",
+  "description": "Test task for DoItSoftware",
+  "main": "index.js",
+  "scripts": {
+    "prestart": "npm run build",
+    "start": "node --require=dotenv/config dist/index.js ",
+    "start:dev": "nodemon src/index.js -r dotenv/config --exec babel-node",
+    "test": "test",
+    "build": "rm -rf dist/ && babel src/ -d dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/volodymyr-sevastianov/backend-dev-challenge.git"
+  },
+  "author": "Volodymyr Sevastianov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/volodymyr-sevastianov/backend-dev-challenge/issues"
+  },
+  "homepage": "https://github.com/volodymyr-sevastianov/backend-dev-challenge#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.10.4",
+    "@babel/core": "^7.10.4",
+    "@babel/node": "^7.10.4",
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "@babel/polyfill": "^7.10.4",
+    "@babel/preset-env": "^7.10.4",
+    "nodemon": "^2.0.4"
+  },
+  "dependencies": {
+    "@babel/plugin-transform-runtime": "^7.10.4",
+    "camelcase-keys": "^6.2.2",
+    "csvtojson": "^2.0.10",
+    "dotenv": "^8.2.0",
+    "mongoose": "^5.9.21",
+    "nodemailer": "^6.4.10"
+  }
+}
