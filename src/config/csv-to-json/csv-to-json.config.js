@@ -1,5 +1,7 @@
 const { CSV_DELIMITER } = process.env;
 
 export class CsvToJsonConfig {
-  delimiter = CSV_DELIMITER;
+  delimiter = CSV_DELIMITER || '|';
+
+  checkColumn = true;
 }

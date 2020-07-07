@@ -1,7 +1,6 @@
+import { CONSET_OPTIONS } from '../../const/const';
 import { Patient } from '../../model/models';
 import { EmailService } from '../email/email.service';
-import mongoose from 'mongoose';
-import { CONSET_OPTIONS } from '../../const/const';
 
 export class PatientService {
   constructor(model = Patient, emailService = new EmailService()) {
@@ -19,17 +18,21 @@ export class PatientService {
 
   async create(patients) {
     if (!Array.isArray(patients)) {
-      return await this.model.create(patients);
+      return this.model.create(patients);
     }
-    let createdPatients = await this.model.insertMany(patients);
+    const createdPatients = await this.model.insertMany(patients);
+    console.log('Patients successfully created.');
+
     await Promise.all(
-      createdPatients.map(async patient => {
+      createdPatients.map(async (patient) => {
         if (patient.consent !== CONSET_OPTIONS.YES) {
           return;
         }
         return this.emailService.createWithTemplate(patient._id);
       }),
     );
+    console.log('Emails successfully scheduled.');
+
     return createdPatients;
   }
 

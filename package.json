@@ -7,7 +7,7 @@
     "prestart": "npm run build",
     "start": "node --require=dotenv/config dist/index.js ",
     "start:dev": "nodemon src/index.js -r dotenv/config --exec babel-node",
-    "test": "test",
+    "test": "jest",
     "build": "rm -rf dist/ && babel src/ -d dist"
   },
   "repository": {
@@ -27,14 +27,39 @@
     "@babel/plugin-proposal-class-properties": "^7.10.4",
     "@babel/polyfill": "^7.10.4",
     "@babel/preset-env": "^7.10.4",
-    "nodemon": "^2.0.4"
+    "@types/jest": "^26.0.4",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.4.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-simple-import-sort": "^5.0.3",
+    "jest": "^26.1.0",
+    "nodemon": "^2.0.4",
+    "prettier": "2.0.5"
   },
   "dependencies": {
     "@babel/plugin-transform-runtime": "^7.10.4",
     "camelcase-keys": "^6.2.2",
+    "cron": "^1.8.2",
+    "cronstrue": "^1.94.0",
     "csvtojson": "^2.0.10",
     "dotenv": "^8.2.0",
     "mongoose": "^5.9.21",
-    "nodemailer": "^6.4.10"
+    "nodemailer": "^6.4.10",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "(src)/**/*.{js,ts,json}": [
+      "prettier --write",
+      "eslint \"**/*.js\""
+    ]
   }
 }

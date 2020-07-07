@@ -1,8 +1,9 @@
-import { DbConfig } from '../../config/db/db.config';
 import mongoose from 'mongoose';
 
-export class DbService {
-  constructor(dbConfig = new DbConfig()) {
+import { DBConfig } from '../../config/db/db.config';
+
+export class DBService {
+  constructor(dbConfig = new DBConfig()) {
     this.dbConfig = dbConfig;
   }
 

@@ -9,3 +9,6 @@ source.csv
 
 # Build directory
 /dist
+
+# IDE config
+.vscode

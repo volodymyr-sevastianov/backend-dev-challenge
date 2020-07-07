@@ -20,7 +20,7 @@ export const patientSchema = new Schema({
   emailAddress: {
     type: String,
     validate: {
-      validator: value => {
+      validator: (value) => {
         if (!value) {
           return true;
         }
